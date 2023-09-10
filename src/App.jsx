@@ -1,13 +1,16 @@
-
-import './App.css'
-import NavBar from './components/NavBar/NavBar'
+import { useState } from "react";
+import StartGame from "./components/StartGame";
+import GamePlay from "./components/GamePlay";
 
 function App() {
+  const [isGameStarted, setIsGameStarted] = useState(false);
 
-return (
-  <NavBar/>
-)
-
+  const toggleGameplay = () => {
+    setIsGameStarted((prev) => !prev);
+  };
+  return (
+    <>{isGameStarted ? <GamePlay /> : <StartGame toggle={toggleGameplay} />}</>
+  );
 }
 
-export default App
+export default App;
